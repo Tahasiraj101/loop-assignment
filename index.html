@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Table</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: rgb(129, 129, 240);
+            padding: 20px;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.9); /* Slightly more opaque */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            max-width: 500px; /* Set max-width */
+            margin: auto; /* Center the container */
+        }
+        .result {
+            margin-top: 20px;
+            background: linear-gradient(135deg, #0066ff, #afbfd8, #a1bbe1, #abc1e3, #0066ff);
+            border-radius: 5px;
+            padding: 10px; /* Added padding for better readability */
+            font-size: 20px;
+            color: white; /* Set text color to white for better contrast */
+        }
+        label {
+            font-size: 20px; /* Adjusted font size for better mobile view */
+            color: rgb(92, 119, 153);
+            font-weight: 500;
+        }
+        h1, h2 {
+            font-size: 24px; /* Adjusted font size for better mobile view */
+            color: rgb(39, 39, 116);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Multiplication Table</h1>
+        <div class="form-group">
+            <label for="tableNumber">Enter the number for table:</label>
+            <input type="number" class="form-control" id="tableNumber" placeholder="e.g., 6" required>
+        </div>
+        <div class="form-group">
+            <label for="limit">Enter the limit (e.g., 30):</label>
+            <input type="number" class="form-control" id="limit" placeholder="e.g., 30" required>
+        </div>
+        <button class="btn btn-primary btn-block" onclick="generateTable()">Generate Table</button>
+        
+        <h2 class="mt-4">Result:</h2>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function generateTable() {
+            const number = parseFloat(document.getElementById("tableNumber").value);
+            const limit = parseFloat(document.getElementById("limit").value);
+            let resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = ""; // Clear previous results
+
+            // Input validation
+            if (isNaN(number) || isNaN(limit) || limit <= 0) {
+                alert("Please enter valid numbers and limit greater than 0.");
+                return;
+            }
+
+            // Generate multiplication table
+            for (let i = 1; i <= limit; i++) {
+                resultDiv.innerHTML += `${number} x ${i} = ${number * i}<br>`;
+            }
+        }
+    </script>
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
